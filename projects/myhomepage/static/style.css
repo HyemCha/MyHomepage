@@ -1,0 +1,14 @@
+/*textarea{*/
+/*    width:100%;*/
+/*}*/
+
+input[type=submit]{
+    margin-top: 10px;
+    width: 179px;
+    height: 61px;
+
+    background: #A6D3FD;
+    border: 0;
+    box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
