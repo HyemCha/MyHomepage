@@ -1,75 +1,78 @@
 {% extends 'base.html' %}
 {% load pybo_filter %}
 {% block content %}
-<div class="container my-3">
-    <table class="table">
-        <thread>
-            <tr class="table-dark">
-                <th>번호</th>
-                <th>제목</th>
-                <th>작성일시</th>
-            </tr>
-        </thread>
-        <tbody>
+    <div class="container my-3">
         {% if question_list %}
             {% for question in question_list %}
-                <tr>
-                    <td>
-                        <!-- 번호 = 전체건수 - 시작인덱스 - 현재인덱스 + 1 -->
-                        {{ question_list.paginator.count|sub:question_list.start_index|sub:forloop.counter0|add:1 }}
-                    </td>
-                    <td>
-                        <a href="{% url 'pybo:detail' question.id %}">{{ question.subject }}</a>
-                        {% if question.answer_set.count > 0 %}
-                            <span class="text-danger small mx-2">{{ question.answer_set.count }}</span>
-                        {% endif %}
-                    </td>
-                    <td>{{ question.create_date }}</td>
-                </tr>
+                <div class="main_post_board">
+                    <div class="post_time">
+                        {{ question.create_date }}
+                    </div>
+                    <div class="post_divider"></div>
+                    {% if question.imgfile %}
+                        <div class="post_image_wrap">
+                            <img src="{{ question.imgfile.url }}" id="post_img" class="post_image">
+                        </div>
+{#                        <script>#}
+{#                            let postImg = document.getElementById("post_img")#}
+{#                            postImg.style.backgroundImage = "url({{ question.imgfile.url }})"#}
+{#                            postImg.style.backgroundSize = "cover"#}
+{#                        </script>#}
+                    {% endif %}
+                    <div class="post_content">{{ question.content }}</div>
+                </div>
             {% endfor %}
         {% else %}
-            <td colspan="3">질문이 없습니다.</td>
+            <div>
+                <p>질문이 없습니다.</p>
+            </div>
         {% endif %}
-        </tbody>
-    </table>
-    <!-- 페이징처리 시작 -->
-    <ul class="pagination justify-content-center">
-        <!-- 이전페이지 -->
-        {% if question_list.has_previous %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-        </li>
-        {% endif %}
-        <!-- 페이지리스트 -->
-        {% for page_number in question_list.paginator.page_range %}
-            {% if page_number >= question_list.number|add:-5 and page_number <= question_list.number|add:5 %}
-        {% if page_number == question_list.number %}
-        <li class="page-item active" aria-current="page">
-            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-        </li>
-        {% else %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-        </li>
-        {% endif %}
-        {% endif %}
-        {% endfor %}
-        <!-- 다음페이지 -->
-        {% if question_list.has_next %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ question_list.next_page_number }}">다음</a>
-        </li>
-        {% else %}
-        <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-        </li>
-        {% endif %}
-    </ul>
-    <!-- 페이징처리 끝 -->
-    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>
-</div>
+
+        <!-- 페이징처리 시작 -->
+        <ul class="pagination justify-content-center">
+            <!-- 이전페이지 -->
+            {% if question_list.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ question_list.previous_page_number }}">이전</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+                </li>
+            {% endif %}
+            <!-- 페이지리스트 -->
+            {% for page_number in question_list.paginator.page_range %}
+                {% if page_number >= question_list.number|add:-2 and page_number <= question_list.number|add:2 %}
+                    {% if page_number == question_list.number %}
+                        <li class="page-item active" aria-current="page">
+                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+                        </li>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            <!-- 다음페이지 -->
+            {% if question_list.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ question_list.next_page_number }}">다음</a>
+                </li>
+            {% else %}
+                <li class="page-item disabled">
+                    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+                </li>
+            {% endif %}
+        </ul>
+        <!-- 페이징처리 끝 -->
+        {#    <a href="{% url 'pybo:question_create' %}" class="btn btn-primary">질문 등록하기</a>#}
+        {#    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">#}
+        {#    <path d="M43.5971 19.5972H28.4044V4.40118C28.4045 1.97415 26.4294 0 23.9999 0C21.5704 0 19.5955 1.97415 19.5955 4.40118V19.5972H4.40444C1.97586 19.5972 0 21.573 0 23.9999C0 26.426 1.97508 28.4011 4.40444 28.4011H19.5955V43.5971C19.5955 46.0249 21.5696 47.9998 23.9999 47.9998C26.4294 47.9998 28.4044 46.0248 28.4044 43.5971V28.4011H43.5971C46.0249 28.4011 47.9998 26.426 47.9998 23.9999C48 21.573 46.0249 19.5972 43.5971 19.5972Z" fill="#CECCCC"/>#}
+        {#    </svg>#}
+        <div class="padding_div" style="margin-bottom: 150px"></div>
+    </div>
+    {#    <img src="{% static 'plus.svg' %}">#}
+    <a href="{% url 'pybo:question_create' %}" class="new_post_btn"></a>
+    <div class="main_bottom_bar"></div>
 {% endblock %}

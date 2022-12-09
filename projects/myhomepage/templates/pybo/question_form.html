@@ -1,35 +1,49 @@
 {% extends 'base.html' %}
 {% block content %}
     <div class="container">
-        <h5 class="my-3 border-bottom pb-2">질문 등록</h5>
-{#        form 태그에 action 속성을 지정하지 않으면 현재 페이지의 URL이 디폴트 action으로 설정된다.#}
-        <form method="post">
+        {#        <h5 class="my-3 border-bottom pb-2">질문 등록</h5>#}
+        {#        form 태그에 action 속성을 지정하지 않으면 현재 페이지의 URL이 디폴트 action으로 설정된다.#}
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             <!-- 오류표시 Start -->
             {% if form.errors %}
-            <div class="alert alert-danger" role="alert">
-                {% for field in form %}
-                {% if field.errors %}
-                <div>
-                    <strong>{{ field.label }}</strong>
-                    {{ field.errors }}
+                <div class="alert alert-danger" role="alert">
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <div>
+                                <strong>{{ field.label }}</strong>
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endif %}
-                {% endfor %}
-            </div>
             {% endif %}
             <!-- 오류표시 End -->
-            <div class="mb-3">
-                <label for="subject" class="form-label">제목</label>
-                <input type="text" class="form-control" name="subject" id="subject"
-                       value="{{ form.subject.value|default_if_none:'' }}">
+            <button type="submit" class="question_form_submit">저장하기</button>
+            <div class="form-group">
+                <label for="imgfile">오늘의 사진 : </label>
+                <input type="file" class="form-control" name="imgfile" id="imgfile">
             </div>
             <div class="mb-3">
                 <label for="content" class="form-label">내용</label>
-                <textarea class="form-control" name="content"
+                <textarea class="form-control" maxlength="450" name="content" onkeyup="counter(this, 450)"
                           id="content" rows="10">{{ form.content.value|default_if_none:'' }}</textarea>
             </div>
-            <button type="submit" class="btn btn-primary">저장하기</button>
         </form>
+        <div class="progress">
+            <div id="progressbar" class="progress-bar" role="progressbar" onkeyup="counter(this,450)" style="width: 0%"
+                 aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
     </div>
+    <script>
+        function counter(text, length) {
+            let progressbar = document.getElementById("progressbar")
+            let limit = length
+            let str = text.value.length
+            progressbar.style.width = str / length * 100 + "%"
+            if (str == limit) {
+            }
+        }
+
+    </script>
 {% endblock %}

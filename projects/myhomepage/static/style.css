@@ -2,7 +2,7 @@
 /*    width:100%;*/
 /*}*/
 
-input[type=submit]{
+.question_form_submit{
     margin-top: 10px;
     width: 179px;
     height: 61px;
@@ -11,4 +11,71 @@ input[type=submit]{
     border: 0;
     box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
+}
+
+/* Rectangle 7 */
+
+.main_post_board{
+   /*position: absolute;*/
+    margin: 20px auto;
+    padding: 25px;
+    width: 350px;
+    /*height: 397px;*/
+    background: #FFFFFF;
+    box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.25), inset -4px -4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.post_time{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+
+    color: #000000;
+}
+.post_divider{
+    border-bottom: 1px #000000 solid;
+    margin: 5px 0 15px;
+}
+.post_image_wrap{
+    width: 300px;
+    max-height: 196px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.post_image{
+    width: 300px;
+    max-height: initial;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.post_content{
+    margin-top: 10px;
+}
+.main_bottom_bar{
+    position: fixed;
+    margin: 0px auto;
+    width: 380px;
+    height: 75px;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    background: #C6E4EE;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25), inset -4px -4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+.new_post_btn{
+    position: fixed;
+    width: 82px;
+    height: 82px;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    border-radius: 50%;
+
+    background: #FFCBCB;
+    box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.25);
 }
