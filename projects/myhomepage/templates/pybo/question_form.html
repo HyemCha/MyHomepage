@@ -19,7 +19,8 @@
                 </div>
             {% endif %}
             <!-- 오류표시 End -->
-            <button type="submit" class="question_form_submit">저장하기</button>
+            <button type="button" class="question_form_cancel" oncl>취소</button>
+            <button type="submit" class="question_form_submit">완료💌</button>
             <div class="form-group">
                 <label for="imgfile">오늘의 사진 : </label>
                 <input type="file" class="form-control" name="imgfile" id="imgfile">
@@ -44,6 +45,8 @@
             if (str == limit) {
             }
         }
-
+        function cancel(){
+            history.back()
+        }
     </script>
 {% endblock %}

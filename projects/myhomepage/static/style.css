@@ -1,7 +1,67 @@
-/*textarea{*/
-/*    width:100%;*/
-/*}*/
+body{
+    font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+}
+/*top bar*/
+.main_top_bar{
+    padding: 0 13px;
+    position: fixed;
+    width: 390px;
+    height: 85px;
+    left: 0px;
+    top: 0px;
 
+    background: #C6E4EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset -4px -4px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 0px 20px 20px;
+}
+.top_bar_container{
+    height: 85px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+.top_bar_user_wrap a{
+    color: #2f3438;
+    padding: 2px 0 0;
+}
+.top_bar_user{
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+.top_bar_user_icon{
+    /*position: absolute;*/
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    background: #81B5BC;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.05), inset -4px -4px 10px rgba(0, 0, 0, 0.25);
+
+    font-size: 24px;
+    color: #d5d5d5;
+    line-height: 40px;
+    text-align: center;
+}
+.top_bar_home{
+    font-size: 19px;
+    text-decoration: none;
+    color: #131313;
+}
+
+
+/**/
+.question_form_cancel{
+    width: 179px;
+    height: 61px;
+
+    background: #DEDEDE;
+    border: 0;
+    box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
 .question_form_submit{
     margin-top: 10px;
     width: 179px;
@@ -38,16 +98,21 @@
 }
 .post_image_wrap{
     width: 300px;
-    max-height: 196px;
+    /*max-height: auto;*/
     border-radius: 5px;
+}
+.post_image_top{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     overflow: hidden;
+
 }
 .post_image{
-    width: 300px;
-    max-height: initial;
+    max-width: 300px;
+    height: auto;
     border-radius: 5px;
     cursor: pointer;
-
 }
 .post_content{
     margin-top: 10px;
@@ -66,7 +131,7 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.25), inset -4px -4px 8px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 }
-.new_post_btn{
+.create_post_btn_wrap{
     position: fixed;
     width: 82px;
     height: 82px;
@@ -75,7 +140,20 @@
     transform: translateX(-50%);
     z-index: 20;
     border-radius: 50%;
+    text-align: center;
+    line-height: 82px;
 
     background: #FFCBCB;
     box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.25);
+}
+.new_post_btn{
+    hover:#5c636a;
+    color: #5c636a;
+    width: 82px;
+    height: 82px;
+    font-size: 65px;
+    --ionicon-stroke-width: 45px;
+}
+.new_post_btn > ion-icon{
+    margin-top: 8px;
 }
