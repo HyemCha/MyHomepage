@@ -1,5 +1,7 @@
 body{
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
+    width: 390px;
+    margin: 0 auto;
 }
 /*top bar*/
 .main_top_bar{
@@ -7,8 +9,8 @@ body{
     position: fixed;
     width: 390px;
     height: 85px;
-    left: 0px;
-    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
 
     background: #C6E4EE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset -4px -4px 10px rgba(0, 0, 0, 0.25);
@@ -28,7 +30,7 @@ body{
 }
 .top_bar_user{
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     align-items: center
 }
 .top_bar_user_icon{
@@ -116,6 +118,11 @@ body{
 }
 .post_content{
     margin-top: 10px;
+    word-break:break-all;
+}
+.post_user_name{
+    font-weight: bold;
+    font-size: 14px;
 }
 .main_bottom_bar{
     position: fixed;
