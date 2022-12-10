@@ -11,3 +11,8 @@
 
 ## DB
 - sqlite
+
+12/10
+- pillow (사진)
+__
+- django 4.0.3
