@@ -14,5 +14,6 @@
 
 12/10
 - pillow (사진)
-__
+- markdown
+- --
 - django 4.0.3
