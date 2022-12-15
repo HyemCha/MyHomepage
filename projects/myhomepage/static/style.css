@@ -1,3 +1,7 @@
+a{
+    text-decoration: none;
+    color: black;
+}
 body{
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
     width: 390px;
@@ -124,6 +128,13 @@ body{
     font-weight: bold;
     font-size: 14px;
 }
+.post_share_pdf{
+    color: #1c1f23;
+}
+.post_share_pdf>ion-icon{
+    z-index: 0;
+}
+
 .main_bottom_bar{
     position: fixed;
     margin: 0px auto;

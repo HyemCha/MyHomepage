@@ -75,4 +75,4 @@ def question_vote(request, question_id):
         messages.error(request, '본인이 작성한 글은 추천할수 없습니다')
     else:
         question.voter.add(request.user)
-    return redirect('pybo:detail', question_id=question.id)
+    return redirect('pybo:index')

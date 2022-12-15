@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
     <title>Hello, pybo!</title>
 </head>
-<body>
+<body onload="startTimer()">
 <!-- 네비게이션바 -->
 {% include "navbar.html" %}
 <!-- 기본 템플릿 안에 삽입될 내용 Start -->
@@ -24,6 +24,21 @@
 <!-- 자바스크립트 Start -->
 {% block script %}
 {% endblock %}
+<div id="main_modal" style="display: none; z-index: 50; left: 50%; transform: translateX(-50%)">
+    <p>안녕하세요! myhomepage에 오신 것을 환영합니다.🎉</p>
+</div>
+<script>
+    let modal = document.getElementById("main_modal")
+        modal.style.display="fix"
+    let timerId = null
+    function startTimer(){
+        timerId = setTimeout("modal()", 5000);
+    }
+    function modal(){
+        modal.style.display = "none"
+    }
+
+</script>
 <!-- 자바스크립트 End -->
 <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 </body>
